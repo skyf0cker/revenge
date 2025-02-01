@@ -59,7 +59,3 @@ This project is licensed under the MIT License.
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue if you have any suggestions or improvements.
-
-## Contact
-
-For any questions or inquiries, please contact [Your Name] at [Your Email].
