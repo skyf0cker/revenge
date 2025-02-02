@@ -1,4 +1,9 @@
 # Revenge CLI
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="45" fill="none" stroke="#2d2d2d" stroke-width="2"/>
+  <path d="M50 20 L75 75 L25 75" fill="#6b46c1"/>
+  <path d="M50 80 L65 65 L35 65" fill="#6b46c1"/>
+</svg>
 
 Revenge CLI is a command-line tool for encrypting and decrypting files in a folder. It allows you to convert a folder into an encrypted binary file and vice versa.
 
