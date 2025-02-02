@@ -1,5 +1,7 @@
-# Revenge CLI
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0NSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMmQyZDJkIiBzdHJva2Utd2lkdGg9IjIiLz4KICA8cGF0aCBkPSJNNTAgMjAgTDc1IDc1IEwyNSA3NSIgZmlsbD0iIzZiNDZjMSIvPgogIDxwYXRoIGQ9Ik01MCA4MCBMNjUgNjUgTDM1IDY1IiBmaWxsPSIjNmI0NmMxIi8+Cjwvc3ZnPgo=">
+<div align="center">
+    <img alt="logo" width="120" src="https://raw.githubusercontent.com/skyf0cker/revenge/refs/heads/main/images/logo.svg" />
+    <h1>Revenge</h1>
+</div>
 
 Revenge CLI is a command-line tool for encrypting and decrypting files in a folder. It allows you to convert a folder into an encrypted binary file and vice versa.
 
@@ -14,7 +16,6 @@ Revenge CLI is a command-line tool for encrypting and decrypting files in a fold
 ## Requirements
 
 * Python 3.x
-* `revenge` module (Ensure you have this module installed or replace it with your own implementation)
 
 ## Installation
 
