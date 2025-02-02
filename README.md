@@ -4,14 +4,16 @@ Revenge CLI is a command-line tool for encrypting and decrypting files in a fold
 
 ## Features
 
-- Encrypt a folder into a single binary file.
-- Decrypt an encrypted binary file back into a folder.
-- Generate and use a 256-bit AES encryption key.
+* Encrypt a folder into a single binary file.
+* Decrypt an encrypted binary file back into a folder.
+* Split an encrypted binary file into chunks.
+* Reveal binary chunks back into the original file.
+* Generate and use a 256-bit AES encryption key.
 
 ## Requirements
 
-- Python 3.x
-- `revenge` module (Ensure you have this module installed or replace it with your own implementation)
+* Python 3.x
+* `revenge` module (Ensure you have this module installed or replace it with your own implementation)
 
 ## Installation
 
@@ -23,34 +25,59 @@ Revenge CLI is a command-line tool for encrypting and decrypting files in a fold
 
 ### Command-line Arguments
 
-- `mode`: Mode of operation. Use `encrypt` to convert a folder to an encrypted binary file, and `decrypt` to convert an encrypted binary file back to a folder.
-- `target_path`: Path to the target folder (for encryption) or binary file (for decryption).
-- `output_path`: Path to the output folder (for decryption) or binary file (for encryption).
-- `--key`: (Optional) Path to the encryption key file. If not provided, a new key will be generated and saved in the output directory.
+The following modes are available:
 
-### Examples
+* `encrypt`: Convert a folder to an encrypted binary file.
+* `decrypt`: Convert an encrypted binary file back to a folder.
+* `split`: Split an encrypted binary file into chunks.
+* `reveal`: Join binary chunks back into the original file.
 
-#### Encrypt a Folder
+### Modes
 
+#### Encrypt Mode
+
+* `target`: Path to the target folder.
+* `output`: Path to the output folder.
+* `--key`: (Optional) Path to the encryption key file. If not provided, a new key will be generated and saved in the output directory.
+* `--metadata`: Path to metadata file.
+
+Example:
 ```sh
-# recommand
-uv run revenge/cli.py encrypt /path/to/folder /path/to/output
-# not verified
-python revenge/cli.py encrypt /path/to/folder /path/to/output
+python revenge/cli.py encrypt /path/to/folder /path/to/output --key /path/to/key --metadata /path/to/metadata
 ```
 
-This command will encrypt the contents of `/path/to/folder` into a binary file located at `/path/to/output/output.bin`. If no key is provided, a new key will be generated and saved as `encryption_key.bin` in the output directory.
+#### Decrypt Mode
 
-#### Decrypt a Binary File
+* `binary`: Path to the binary file.
+* `output`: Path to the output folder.
+* `--key`: Path to the encryption key file.
+* `--metadata`: Path to metadata file.
 
+Example:
 ```sh
-# recommand
-uv run revenge/cli.py encrypt /path/to/folder /path/to/output
-# not verified
-python revenge/cli.py decrypt /path/to/output/output.bin /path/to/decrypted_folder --key /path/to/output/encryption_key.bin
+python revenge/cli.py decrypt /path/to/binary /path/to/output --key /path/to/key --metadata /path/to/metadata
 ```
 
-This command will decrypt the binary file `/path/to/output/output.bin` into the folder `/path/to/decrypted_folder` using the key stored in `/path/to/output/encryption_key.bin`.
+#### Split Mode
+
+* `binary`: Path to the encrypted binary file.
+* `output`: Path to the output folder.
+* `--chunk-size`: Size of each chunk in bytes. Defaults to 1MB.
+
+Example:
+```sh
+python revenge/cli.py split /path/to/binary /path/to/output --chunk-size 1048576
+```
+
+#### Reveal Mode
+
+* `chunks`: Path to the folder containing the binary chunks.
+* `output`: Path where the joined binary file will be saved.
+
+Example:
+```sh
+python revenge/cli.py reveal /path/to/chunks /path/to/output
+```
 
 ## License
 
