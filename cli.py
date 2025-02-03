@@ -4,6 +4,8 @@ from os.path import dirname, join
 from revenge import Revenge
 from posixpath import abspath
 from posixpath import expanduser
+import uvicorn
+import server
 
 def encrypt(args):
     target_path = abspath(expanduser(args.target))
@@ -67,6 +69,9 @@ def reveal_binary_file(args):
     revenge = Revenge.reveal_instance(chunk_folder=chunk_folder, output_path=output_path)
     revenge._join_binary_chunks()
 
+def start_server(args):
+    uvicorn.run(server.app, host=args.host, port=args.port)
+
 def main():
     parser = argparse.ArgumentParser(description="Encrypt and decrypt files in a folder.")
     subparsers = parser.add_subparsers(dest='mode')
@@ -99,6 +104,12 @@ def main():
     reveal_parser.add_argument('chunks', help="Path to the folder containing the binary chunks.")
     reveal_parser.add_argument('output', help="Path where the joined binary file will be saved.")
     reveal_parser.set_defaults(func=reveal_binary_file)
+
+    # Server mode
+    server_parser = subparsers.add_parser('server', help="Start the HTTP server.")
+    server_parser.add_argument('--host', default='127.0.0.1', help="Host address to bind the server to.")
+    server_parser.add_argument('--port', type=int, default=8000, help="Port to bind the server to.")
+    server_parser.set_defaults(func=start_server)
 
     args = parser.parse_args()
     args.func(args)
